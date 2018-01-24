@@ -1,0 +1,19 @@
+{
+  "name": "@sfem/breakpoint",
+  "version": "1.1.0",
+  "description": "Simple scss media query mixin. Helper for responsive design.",
+  "main": "sfem-breakpoint.scss",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Euheny/sfem.breakpoint.git"
+  },
+  "author": "Euheny Bondarovich",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/euheny/sfem.breakpoint/issues"
+  },
+  "homepage": "https://github.com/euheny/sfem.breakpoint#readme"
+}

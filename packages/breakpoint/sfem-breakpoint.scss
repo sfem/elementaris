@@ -1,0 +1,48 @@
+$breakpoints: (
+  xxs: 320px,
+  xs: 640px,
+  s: 768px,
+  m: 1024px,
+  l: 1280px,
+  xl: 1440px,
+  xxl: 1600px
+) !default;
+
+@function breakpoint-parse-query($query, $mq: 'all') {
+  $length: length($query);
+  $mq: $mq + ' ';
+
+  @if $length == 1 {
+    @return $mq + 'and (min-width: ' + $query + ')';
+  }
+
+  @if (type-of(nth($query, 1)) == 'string' and type-of(nth($query, 2)) == 'number') {
+    @return $mq + 'and (' + nth($query, 1) + ': ' + nth($query, 2) + ')';
+  }
+
+  @if (type-of(nth($query, 1)) == 'number' and type-of(nth($query, 2)) == 'number') {
+    @return $mq + 'and (min-width: ' + nth($query, 1) + ') and (max-width: ' + nth($query, 2) + ')';
+  }
+
+  @each $single-query in $query {
+    $mq: $mq + 'and (' + nth($query, 1) + ': ' + nth($query, 2) + ')';
+  }
+  @return $mq;
+}
+
+@mixin bp($query, $for: 'all') {
+  $q: map-get($breakpoints, $query);
+  $query-string: breakpoint-parse-query($q, $for);
+
+  @media #{$query-string} {
+    @content;
+  }
+}
+
+@mixin bpq($query, $for: 'all') {
+  $query-string: breakpoint-parse-query($query, $for);
+
+  @media #{$query-string} {
+    @content;
+  }
+}
