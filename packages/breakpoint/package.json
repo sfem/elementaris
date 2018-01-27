@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/euheny/sfem.breakpoint.git"
+    "url": "git+https://github.com/sfem/breakpoint.git"
   },
   "author": "Euheny Bondarovich",
   "license": "ISC",
