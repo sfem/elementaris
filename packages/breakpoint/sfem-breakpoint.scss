@@ -30,8 +30,8 @@ $breakpoints: (
   @return $mq;
 }
 
-@mixin bp($query, $for: 'all') {
-  $q: map-get($breakpoints, $query);
+@mixin bp($query, $for: 'all', $bp: $breakpoints) {
+  $q: map-get($bp, $query);
   $query-string: breakpoint-parse-query($q, $for);
 
   @media #{$query-string} {
