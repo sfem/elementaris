@@ -1,1 +1,1 @@
-# scss-sugars
+# @sfem/scss-sugars

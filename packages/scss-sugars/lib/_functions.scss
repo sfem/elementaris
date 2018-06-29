@@ -1,0 +1,25 @@
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+@function get-text-color($c, $l: $sugar-text-light, $d: $sugar-text-dark) {
+  $x: round((red($c)*299 + green($c)*587 + blue($c)*114) / 1000);
+  @if ($x > 160) {
+    @return $d;
+  } @else {
+    @return $l;
+  }
+}
+
+@function typo(
+  $s: $sugar-typo-fz,
+  $lh: $sugar-typo-lh,
+  $w: $sugar-typo-fw,
+  $f: $sugar-typo-font
+) {
+  @return unquote($w + ' ' + $s + '/' + $lh + ' ' + $f);
+}

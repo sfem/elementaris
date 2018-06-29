@@ -1,0 +1,77 @@
+@mixin box($w, $h: $w) {
+  width: $w;
+  height: $h;
+}
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+
+  &:before {
+    display: block;
+
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+
+    content: '';
+  }
+}
+
+@mixin aspect-padding($width, $height) {
+  padding-top: ($height / $width) * 100%;
+}
+
+@mixin absolute-fill() {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+@mixin absolute-centered() {
+  @include absolute-fill();
+
+  margin: auto;
+}
+
+@mixin place-center() {
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+@mixin elips() {
+  overflow: hidden;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin break-word() {
+  word-wrap: break-word;
+  word-break: break-all;
+
+  overflow-wrap: break-word;
+}
+
+@mixin flex-center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin colors($list: $sugar-colors, $type: color, $alter-text: false) {
+  $property: if($type == color, 'color', 'background-color');
+  $class: if($type == color, 'color', 'bg');
+
+  @each $color, $value in $list {
+    &--#{$class}-#{$color} {
+      #{$property}: $value;
+
+      @if $alter-text != false and $type != color {
+        color: get-text-color($color, $l: #fff, $d: #000)
+      }
+    }
+  }
+}
