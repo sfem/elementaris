@@ -3,21 +3,21 @@
   height: $h;
 }
 
+@mixin aspect-padding($width, $height) {
+  width: 100%;
+  padding-top: ($height / $width) * 100%;
+}
+
 @mixin aspect-ratio($width, $height) {
   position: relative;
 
   &:before {
-    display: block;
+    @include aspect-padding($width, $height);
 
-    width: 100%;
-    padding-top: ($height / $width) * 100%;
+    display: block;
 
     content: '';
   }
-}
-
-@mixin aspect-padding($width, $height) {
-  padding-top: ($height / $width) * 100%;
 }
 
 @mixin absolute-fill() {
