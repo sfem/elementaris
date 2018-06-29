@@ -2,10 +2,20 @@ $breakpoints: (
   xxs: 320px,
   xs: 640px,
   s: 768px,
-  m: 1024px,
+  m: 980px,
   l: 1280px,
   xl: 1440px,
   xxl: 1600px
+) !default;
+
+$breakpoints-before: (
+  xxs: max-width 320px,
+  xs: max-width 640px,
+  s: max-width 768px,
+  m: max-width 980px,
+  l: max-width 1280px,
+  xl: max-width 1440px,
+  xxl: max-width 1600px
 ) !default;
 
 @function breakpoint-parse-query($query, $mq: 'all') {
