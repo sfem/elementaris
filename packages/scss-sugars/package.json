@@ -14,5 +14,8 @@
   "bugs": {
     "url": "https://github.com/sfem/scss-sugars/issues"
   },
-  "homepage": "https://github.com/sfem/scss-sugars#readme"
+  "homepage": "https://github.com/sfem/scss-sugars#readme",
+  "dependencies": {
+    "@sfem/breakpoint": "^1.2.0"
+  }
 }

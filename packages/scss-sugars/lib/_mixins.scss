@@ -1,3 +1,17 @@
+@mixin mq-sugars-generator($prefix, $suffix) {
+  .#{$prefix}-#{$suffix} {
+    @content;
+  }
+
+  @each $name, $value in $breakpoints {
+    @include bp($name) {
+      .#{$prefix}-#{$name}-#{$suffix} {
+        @content;
+      }
+    }
+  }
+}
+
 @mixin box($w, $h: $w) {
   width: $w;
   height: $h;
