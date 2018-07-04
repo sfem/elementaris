@@ -7,55 +7,60 @@ Install
 ---------
 
 ### npm
-`npm install @sfem/breakpoint`
+`npm install -S @sfem/breakpoint`
 
 Usage
 ---------
 Import module to your scss
 
 ```scss
-@import '@sfem/breakpoint/sfem-breakpoint';
+@import '@sfem/breakpoint/lib/breakpoint';
 ```
 
 Call mixins:
 
 ```scss
-@include bp(xs) {
-  // code
+@include bp(s) {
+  // code for min-width breakpoints
+  // also you can pass bp list in mixin param as bp(s, $your-list)
 }
 
-@include bp(xs, $breakpoints-before) {
-  // code
+@include bp-max(s) {
+  // code for max-width breakpoints
 }
-
 ```
 
 ```scss
 @include bpq(min-width 20em) {
-  // code
+  // code for hand coded breakpoints
 }
 ```
 
-Breakpoints:
+**Breakpoints:**
+
+```scss
+$breakpoints-list: (
+  s: 640px,
+  m: 1024px,
+  l: 1200px,
+  xl: 1440px
+) !default;
+```
+
+Will generate
 
 ```scss
 $breakpoints: (
-  xxs: 320px,
-  xs: 640px,
-  s: 768px,
+  s: 640px,
   m: 1024px,
-  l: 1280px,
-  xl: 1440px,
-  xxl: 1600px
-) !default;
+  l: 1200px,
+  xl: 1440px
+);
 
 $breakpoints-before: (
-  xxs: max-width 320px,
-  xs: max-width 640px,
-  s: max-width 768px,
-  m: max-width 980px,
-  l: max-width 1280px,
-  xl: max-width 1440px,
-  xxl: max-width 1600px
-) !default;
+  s: max-width 640px,
+  m: max-width 1024px,
+  l: max-width 1200px,
+  xl: max-width 1440px
+);
 ```
