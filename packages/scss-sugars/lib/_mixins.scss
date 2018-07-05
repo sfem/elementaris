@@ -1,15 +1,16 @@
-@mixin mq-sugars-generator($prefix, $suffix) {
+@mixin mq-sugars-generator($prefix, $suf: false) {
 
   $class-base: if(str-index(to-string($prefix), '.') != 1, '.#{$prefix}', $prefix);
+  $suffix: if($suf, '-' + $suffix, '');
 
   @at-root {
-    #{$class-base}-#{$suffix} {
+    #{$class-base}#{$suffix} {
       @content;
     }
 
     @each $name, $value in $breakpoints {
       @include bp($name) {
-        #{$class-base}-#{$name}-#{$suffix} {
+        #{$class-base}-#{$name}#{$suffix} {
           @content;
         }
       }
