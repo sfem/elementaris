@@ -1,7 +1,7 @@
 @mixin mq-sugars-generator($prefix, $suf: false) {
 
   $class-base: if(str-index(to-string($prefix), '.') != 1, '.#{$prefix}', $prefix);
-  $suffix: if($suf, '-' + $suffix, '');
+  $suffix: if($suf, '-' + $suf, '');
 
   @at-root {
     #{$class-base}#{$suffix} {
