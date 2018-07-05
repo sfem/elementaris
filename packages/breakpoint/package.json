@@ -2,7 +2,7 @@
   "name": "@sfem/breakpoint",
   "version": "1.2.0",
   "description": "Simple scss media query mixin. Helper for responsive design.",
-  "main": "sfem-breakpoint.scss",
+  "main": "lib/breakpoint.scss",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
