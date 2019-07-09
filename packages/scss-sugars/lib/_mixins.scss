@@ -1,5 +1,4 @@
 @mixin mq-sugars-generator($prefix, $suf: false) {
-
   $class-base: if(str-index(to-string($prefix), '.') != 1, '.#{$prefix}', $prefix);
   $suffix: if($suf, '-' + $suf, '');
 
@@ -40,16 +39,27 @@
   }
 }
 
-@mixin absolute-fill() {
+@mixin box-fill($t: 0, $r: $t, $b: $t, $l: $t) {
+  top: $t;
+  right: $r;
+  bottom: $b;
+  left: $l;
+}
+
+@mixin fixed-fill($t: 0, $r: $t, $b: $t, $l: $t) {
+  @include box-fill($t, $r, $b, $l);
+
+  position: fixed;
+}
+
+@mixin absolute-fill($t: 0, $r: $t, $b: $t, $l: $t) {
+  @include box-fill($t, $r, $b, $l);
+
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
 }
 
 @mixin absolute-centered() {
-  @include absolute-fill();
+  @include absolute-fill(0);
 
   margin: auto;
 }
@@ -77,11 +87,12 @@
 
 @mixin flex-center() {
   display: flex;
+
   align-items: center;
   justify-content: center;
 }
 
-@mixin colors($list: $sugar-colors, $type: color, $alter-text: false) {
+@mixin block-colors($list: $sugar-colors, $type: color, $alter-text: false) {
   $property: if($type == color, 'color', 'background-color');
   $class: if($type == color, 'color', 'bg');
 
@@ -90,8 +101,16 @@
       #{$property}: $value;
 
       @if $alter-text != false and $type != color {
-        color: get-text-color($color, $l: #fff, $d: #000)
+        color: get-text-color($color, $l: #fff, $d: #000);
       }
     }
+  }
+}
+
+@mixin mq-font($f-xs, $f-m) {
+  font: $f-xs;
+
+  @include bp(m) {
+    font: $f-m;
   }
 }
