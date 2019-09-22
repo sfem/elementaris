@@ -6,8 +6,21 @@ Simple scss media query mixin. Helper for responsive design.
 Install
 ---------
 
-### npm
 `npm install -S @sfem/breakpoint`
+
+Settings
+---------
+
+```scss
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1440px
+)
+```
 
 Usage
 ---------
@@ -20,47 +33,75 @@ Import module to your scss
 Call mixins:
 
 ```scss
-@include bp(s) {
-  // code for min-width breakpoints
-  // also you can pass bp list in mixin param as bp(s, $your-list)
+@include bp(sm) {
+  /* code here */
 }
 
-@include bp-max(s) {
-  // code for max-width breakpoints
+// for
+
+@media all and (min-width: 576px) {
+  /* code here */
 }
 ```
 
 ```scss
-@include bpq(min-width 20em) {
-  // code for hand coded breakpoints
+@include bp(sm, $degrade: true) {
+  /* code here */
+}
+
+// for
+
+@media all and (max-width: 575px) {
+  /* code here */
 }
 ```
 
-**Breakpoints:**
-
 ```scss
-$breakpoints-list: (
-  s: 640px,
-  m: 1024px,
-  l: 1200px,
-  xl: 1440px
-) !default;
+@include bp(640px) {
+ /* code here */
+}
+
+// for
+
+@media all and (min-width: 640px) {
+  /* code here */
+}
 ```
 
-Will generate
+```scss
+@include bp(640px 1024px) {
+  /* code here */
+}
+
+// for
+
+@media all and (min-width: 640px) and (max-width: 1024px) {
+  /* code here */
+}
+```
 
 ```scss
-$breakpoints: (
-  s: 640px,
-  m: 1024px,
-  l: 1200px,
-  xl: 1440px
-);
+@include bp(max-width 600px) {
+ /* code here */
+}
 
-$breakpoints-before: (
-  s: max-width 640px,
-  m: max-width 1024px,
-  l: max-width 1200px,
-  xl: max-width 1440px
-);
+// for
+
+@media all and (max-width: 600px) {
+  /* code here */
+}
+```
+
+```scss
+@include bp(((min-width 600px) (max-width 1024px))) {
+  /* code here */
+  /* any query chain */
+}
+
+// for
+
+@media all and (min-width: 600px) and (max-width: 1024px) {
+  /* code here */
+  /* any query chain */
+}
 ```
