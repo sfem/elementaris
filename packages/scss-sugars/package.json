@@ -16,6 +16,15 @@
   },
   "homepage": "https://github.com/sfem/scss-sugars#readme",
   "dependencies": {
-    "@sfem/breakpoint": "^2.0.0"
+    "@sfem/breakpoint": "^2.0.0",
+    "autoprefixer": "^9.6.1",
+    "css-mqpacker": "^7.0.0",
+    "node-sass-tilde-importer": "^1.0.2",
+    "postcss": "^7.0.18",
+    "postcss-csso": "^3.0.0",
+    "postcss-flexbugs-fixes": "^4.1.0"
+  },
+  "devDependencies": {
+    "sass": "^1.22.12"
   }
 }

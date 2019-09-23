@@ -1,7 +1,7 @@
+@import "~@sfem/breakpoint/lib/breakpoint";
 @import '~@sfem/scss-sugars/lib/sugars';
 @import '_scss-core/variables';
 @import '_scss-core/functions';
-@import '_scss-core/mixins';
 
 .#{$sfem-grid-name}-wrap {
   padding: .1px; // hack for fixing unwanted outer margins
@@ -14,7 +14,7 @@
 
 .#{$sfem-grid-name} {
   // Wraps
-  @include mq-sugars-generator(#{&}-, no-wrap) {
+  @include mq-generator(no-wrap) {
     flex-wrap: nowrap;
   }
 
@@ -28,41 +28,44 @@
 
   // vertical align
 
-  @each $item in ((top, flex-start), (bottom, flex-end), (middle, center)) {
-    @include mq-sugars-generator(#{&}--va, nth($item, 1)) {
-      align-items: nth($item, 2);
+  @each $val in (flex-start flex-end center baseline stretch) {
+    $key: str-replace($val, 'flex-');
+    @include mq-generator(align-items, $key) {
+      align-items: $val;
     }
   }
 
   // horizontal align
 
-  @each $item in ((start, flex-start), (end, flex-end), (center, center), (between, space-between), (around, space-around)) {
-    @include mq-sugars-generator(#{&}--ha, nth($item, 1)) {
-      justify-content: nth($item, 2);
+  @each $val in (flex-start flex-end center space-between space-around space-evenly) {
+    $key: str-replace($val, 'flex-');
+
+    @include mq-generator(justify-content, $key) {
+      justify-content: $val;
     }
   }
 
   // grid gaps
 
   @each $num in $sfem-grid-gaps {
-    @include mq-sugars-generator(#{&}--gap, gap-postfix($num)) {
+    @include mq-generator(gap, gap-postfix($num)) {
       margin: -#{get-pad($num) / 2};
     }
   }
 
   // displays
 
-  @each $item in ((block, block), (iblock, inline-block), (iflex, inline-flex)) {
-    @include mq-sugars-generator(#{&}--display, nth($item, 1)) {
-      display: nth($item, 2);
+  @each $val in (block inline-block flex inline-flex) {
+    @include mq-generator(display, $val) {
+      display: $val;
     }
   }
 
   // direction
 
-  @each $item in (column, row) {
-    @include mq-sugars-generator(#{&}--direction, $item) {
-      flex-direction: $item;
+  @each $val in (column, row) {
+    @include mq-generator(direction, $val) {
+      flex-direction: $val;
     }
   }
 }
@@ -71,42 +74,48 @@
 
   // Basic modifers
 
-  @include mq-sugars-generator(#{&}--offset, auto) {
+  @include mq-generator(offset, auto) {
     margin-left: auto;
   }
-  @include mq-sugars-generator(#{&}--offset, '0') {
+  @include mq-generator(offset, '0') {
     margin-left: 0;
   }
-  @include mq-sugars-generator(#{&}--size, auto) {
+  @include mq-generator(size, auto) {
     flex: 1;
   }
-  @include mq-sugars-generator(#{&}--size, min) {
+  @include mq-generator(size, min) {
     flex: 0 1 auto;
   }
-  @include mq-sugars-generator(#{&}--order, first) {
+  @include mq-generator(order, first) {
     order: -1;
   }
-  @include mq-sugars-generator(#{&}--order, last) {
+  @include mq-generator(order, last) {
     order: 999;
   }
 
   min-width: 0;
   max-width: 100%;
-  // vertical align
   padding: get-pad($sfem-grid-gap-base) / 2;
 
-  @each $item in ((top, flex-start), (bottom, flex-end), (middle, center)) {
-    @include mq-sugars-generator(#{&}--va, nth($item, 1)) {
-      align-self: nth($item, 2);
+  @each $val in (auto flex-start flex-end center baseline stretch) {
+    $key: str-replace($val, 'flex-');
+
+    @include mq-generator(align-self, $key) {
+      align-self: $val;
     }
   }
 
   // grid gaps
 
   @each $num in $sfem-grid-gaps {
-    @include mq-sugars-generator('.#{$sfem-grid-name}--gap', '#{gap-postfix($num)} > #{&}') {
-      padding: #{get-pad($num) / 2};
-    }
+      @include mq-generator(
+        $mod: 'gap',
+        $val: $num,
+        $selector: '.#{$sfem-grid-name}',
+        $postselector: ' > #{&}'
+      ) {
+        padding: #{get-pad($num) / 2};
+      }
   }
 
   // Sizes
@@ -121,15 +130,15 @@
     @for $i from 1 through $c {
       $w: 100 / $c * $i * 1%;
 
-      @include mq-sugars-generator(#{&}--order, $i + $postfix) {
+      @include mq-generator(order, $i + $postfix) {
         order: $i;
       }
-      @include mq-sugars-generator(#{&}--size, $i + $postfix) {
+      @include mq-generator(size, $i + $postfix) {
         max-width: $w;
 
         flex: 0 0 $w;
       }
-      @include mq-sugars-generator(#{&}--offset, $i + $postfix) {
+      @include mq-generator(offset, $i + $postfix) {
         margin-left: $w;
       }
     }

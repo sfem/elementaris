@@ -1,16 +1,27 @@
-@mixin mq-generator($mod: null, $val: null, $from: null) {
+@mixin mq-generator(
+  $mod: null,
+  $val: null,
+  $pre: null,
+  $selector: &, // use with caution
+  $postselector: null // use with caution
+) {
   $mod: if($mod, $mq-generator-mod-prefix + $mod, null);
   $val: if($val, $mq-generator-val-prefix + $val, null);
 
-  &#{$mod}#{$val} {
-    @content;
+  @at-root {
+    #{$selector + $mod + $val + $postselector} {
+      @content;
+    }
   }
 
   @each $name, $value in $breakpoints {
     @include bp($name) {
-      &-#{$name}#{$mod}#{$val} {
-        @content;
+      @at-root {
+        #{$selector + $mod + '-' + $name + $val + $postselector} {
+          @content;
+        }
       }
+
     }
   }
 }

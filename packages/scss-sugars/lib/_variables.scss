@@ -1,5 +1,5 @@
-$mq-generator-mod-prefix: '_' !default;
-$mq-generator-val-prefix: '_' !default;
+$mq-generator-mod-prefix: '--' !default;
+$mq-generator-val-prefix: '-' !default;
 
 $sugar-text-contrast-dark: #000 !default;
 $sugar-text-contrast-light: #fff !default;
@@ -8,8 +8,3 @@ $sugar-text-font: 'Roboto', sans-serif !default;
 $sugar-text-size: 1rem !default;
 $sugar-text-line-height: 1.5rem !default;
 $sugar-text-weight: normal !default;
-
-$sugar-colors: (
-  white: $sugar-text-light,
-  black: $sugar-text-dark
-) !default;

@@ -4,6 +4,6 @@
 }
 
 @function gap-postfix($num) {
-  $postfix: if(unit($num) == '' or unit($num) == 'px', strip-unit($num), $num);
+  $postfix: if(unit($num) == 'px', strip-unit($num), $num);
   @return $postfix;
 }
