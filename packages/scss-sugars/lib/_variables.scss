@@ -1,10 +1,13 @@
-$sugar-typo-fz: 16px !default;
-$sugar-typo-lh: 20px !default;
-$sugar-typo-fw: normal !default;
-$sugar-typo-font: 'Roboto', sans-serif !default;
+$mq-generator-mod-prefix: '_' !default;
+$mq-generator-val-prefix: '_' !default;
 
-$sugar-text-light: #fff !default;
-$sugar-text-dark: #000 !default;;
+$sugar-text-contrast-dark: #000 !default;
+$sugar-text-contrast-light: #fff !default;
+
+$sugar-text-font: 'Roboto', sans-serif !default;
+$sugar-text-size: 1rem !default;
+$sugar-text-line-height: 1.5rem !default;
+$sugar-text-weight: normal !default;
 
 $sugar-colors: (
   white: $sugar-text-light,

@@ -1,3 +1,5 @@
+// Converters
+
 @function strip-unit($number) {
   @if type-of($number) == 'number' and not unitless($number) {
     @return $number / ($number * 0 + 1);
@@ -15,23 +17,58 @@
   }
 }
 
-@function get-text-color($c, $l: $sugar-text-light, $d: $sugar-text-dark) {
-  $x: round((red($c)*299 + green($c)*587 + blue($c)*114) / 1000);
-  @if ($x > 160) {
-    @return $d;
-  } @else {
-    @return $l;
+@function rem($px) {
+  @return $px / 16 * 1rem
+}
+
+// Color
+
+@function luminance($color) {
+  $red: nth($linear-channel-values, red($color) + 1);
+  $green: nth($linear-channel-values, green($color) + 1);
+  $blue: nth($linear-channel-values, blue($color) + 1);
+
+  @return .2126 * $red + .7152 * $green + .0722 * $blue;
+}
+
+@function contrast($back, $front) {
+  $backLum: luminance($back) + .05;
+  $foreLum: luminance($front) + .05;
+
+  @return max($backLum, $foreLum) / min($backLum, $foreLum);
+}
+
+@function get-contrast-color($color, $light: $sugar-text-contrast-light, $dark: $sugar-text-contrast-dark) {
+  $light-contrast: contrast($color, white);
+  $dark-contrast: contrast($color, black);
+
+  $minimum-contrast: 3.1;
+
+  @if ($light-contrast < $minimum-contrast) and ($dark-contrast > $light-contrast) {
+    @return $light;
+  }
+  @else {
+    @return $dark;
   }
 }
 
-@function typo(
-  $s: $sugar-typo-fz,
-  $lh: $sugar-typo-lh,
-  $w: $sugar-typo-fw,
-  $f: $sugar-typo-font
-) {
-  @return unquote($w + ' ' + $s + '/' + $lh + ' ' + $f);
+// Typography
+
+@function letter-spacing($tracking, $font-size) {
+  // Tracking from Sketch / font size in px = letter spacing
+  @return $tracking / $font-size * 1em;
 }
+
+@function typo(
+  $font: $sugar-text-font,
+  $font-size: $sugar-text-size,
+  $line-height: $sugar-text-line-height,
+  $weight: $sugar-text-weight
+) {
+  @return unquote($weight + ' ' + $font-size + '/' + $line-height + ' ' + $font);
+}
+
+// Utils
 
 @function deep-map-merge($parent-map, $child-map) {
   $result: $parent-map;

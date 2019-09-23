@@ -1,17 +1,15 @@
-@mixin mq-sugars-generator($prefix, $suf: false) {
-  $class-base: if(str-index(to-string($prefix), '.') != 1, '.#{$prefix}', $prefix);
-  $suffix: if($suf, '-' + $suf, '');
+@mixin mq-generator($mod: null, $val: null, $from: null) {
+  $mod: if($mod, $mq-generator-mod-prefix + $mod, null);
+  $val: if($val, $mq-generator-val-prefix + $val, null);
 
-  @at-root {
-    #{$class-base}#{$suffix} {
-      @content;
-    }
+  &#{$mod}#{$val} {
+    @content;
+  }
 
-    @each $name, $value in $breakpoints {
-      @include bp($name) {
-        #{$class-base}-#{$name}#{$suffix} {
-          @content;
-        }
+  @each $name, $value in $breakpoints {
+    @include bp($name) {
+      &-#{$name}#{$mod}#{$val} {
+        @content;
       }
     }
   }
@@ -39,36 +37,37 @@
   }
 }
 
-@mixin box-fill($t: 0, $r: $t, $b: $t, $l: $t) {
+@mixin box-fill($t: 0, $r: $t, $b: $t, $l: $t, $position: absolute) {
   top: $t;
   right: $r;
   bottom: $b;
   left: $l;
+
+  position: $position;
 }
 
-@mixin fixed-fill($t: 0, $r: $t, $b: $t, $l: $t) {
-  @include box-fill($t, $r, $b, $l);
+@mixin center-block($method: flex, $position: absolute) {
+  @if $method == flex {
+    display: flex;
 
-  position: fixed;
-}
+    align-items: center;
+    justify-content: center;
+  }
 
-@mixin absolute-fill($t: 0, $r: $t, $b: $t, $l: $t) {
-  @include box-fill($t, $r, $b, $l);
+  @if $method == transform {
+    position: $position;
 
-  position: absolute;
-}
+    top: 50%;
+    left: 50%;
 
-@mixin absolute-centered() {
-  @include absolute-fill(0);
+    transform: translate(-50%, -50%);
+  }
 
-  margin: auto;
-}
+  @if $method == position {
+    @include box-fill(0, $position: $position);
 
-@mixin place-center() {
-  top: 50%;
-  left: 50%;
-
-  transform: translate(-50%, -50%);
+    margin: auto;
+  }
 }
 
 @mixin ellipsis() {
@@ -85,32 +84,29 @@
   overflow-wrap: break-word;
 }
 
-@mixin flex-center() {
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-}
-
-@mixin block-colors($list: $sugar-colors, $type: color, $alter-text: false) {
+@mixin color-mods($colors-list, $type: color, $alter-text: false) {
   $property: if($type == color, 'color', 'background-color');
-  $class: if($type == color, 'color', 'bg');
+  $mod: if($type == color, 'color', 'bg');
 
-  @each $color, $value in $list {
-    &--#{$class}-#{$color} {
+  @each $color, $value in $colors-list {
+    &#{$mq-generator-mod-prefix + $mod + $mq-generator-val-prefix + $color} {
       #{$property}: $value;
 
       @if $alter-text != false and $type != color {
-        color: get-text-color($color, $l: #fff, $d: #000);
+        color: get-contrast-color($color);
       }
     }
   }
 }
 
-@mixin mq-font($f-xs, $f-m) {
-  font: $f-xs;
-
-  @include bp(m) {
-    font: $f-m;
+@mixin mq-font($list) {
+  @each $key, $val in $list {
+    @if index(base xs default, $key) {
+      font: $val;
+    } @else {
+      @include bp($key) {
+        font: $val;
+      }
+    }
   }
 }

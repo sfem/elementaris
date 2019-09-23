@@ -16,6 +16,6 @@
   },
   "homepage": "https://github.com/sfem/scss-sugars#readme",
   "dependencies": {
-    "@sfem/breakpoint": "^1.2.1"
+    "@sfem/breakpoint": "^2.0.0"
   }
 }
