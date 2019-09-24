@@ -101,16 +101,27 @@
   overflow-wrap: break-word;
 }
 
-@mixin color-mods($colors-list, $type: color, $alter-text: false) {
+@mixin color-mods($colors-list, $type: color, $alter-text: null, $disable-bp: null) {
   $property: if($type == color, 'color', 'background-color');
   $mod: if($type == color, 'color', 'bg');
 
   @each $color, $value in $colors-list {
-    &#{$mq-generator-mod-prefix + $mod + $mq-generator-val-prefix + $color} {
-      #{$property}: $value;
 
-      @if $alter-text != false and $type != color {
-        color: get-contrast-color($color);
+    @if not $disable-bp {
+      @include mq-generator($mod, $color) {
+        #{$property}: $value;
+
+        @if $alter-text and $type != color {
+          color: get-contrast-color($color);
+        }
+      }
+    } @else {
+      &#{$mq-generator-mod-prefix + $mod + $mq-generator-val-prefix + $color} {
+        #{$property}: $value;
+
+        @if $alter-text and $type != color {
+          color: get-contrast-color($color);
+        }
       }
     }
   }
@@ -119,10 +130,10 @@
 @mixin mq-font($list) {
   @each $key, $val in $list {
     @if index(base xs default, $key) {
-      font: $val;
+      font: unquote($val);
     } @else {
       @include bp($key) {
-        font: $val;
+        font: unquote($val);
       }
     }
   }

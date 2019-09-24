@@ -42,7 +42,7 @@
 }
 
 @function rem($px) {
-  @return $px / 16 * 1rem
+  @return strip-unit($px) / 16 * 1rem
 }
 
 // Color
@@ -84,10 +84,10 @@
 }
 
 @function typo(
-  $font: $sugar-text-font,
   $font-size: $sugar-text-size,
   $line-height: $sugar-text-line-height,
-  $weight: $sugar-text-weight
+  $weight: $sugar-text-weight,
+  $font: $sugar-text-font
 ) {
   @return unquote($weight + ' ' + $font-size + '/' + $line-height + ' ' + $font);
 }
