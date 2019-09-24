@@ -1,0 +1,34 @@
+{
+  "name": "@sfem/elementaris",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Euheny Bondarovich <euheny@gmail.com>",
+  "homepage": "https://github.com/sfem/elementaris#readme",
+  "license": "ISC",
+  "main": "index.scss",
+  "directories": {},
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sfem/elementaris.git"
+  },
+  "scripts": {},
+  "bugs": {
+    "url": "https://github.com/sfem/elementaris/issues"
+  },
+  "dependencies": {
+    "@sfem/breakpoint": "^2.0.0",
+    "@sfem/css-sugars": "^2.0.0",
+    "@sfem/grid": "^2.0.0",
+    "@sfem/scss-sugars": "^2.0.0",
+    "autoprefixer": "^9.6.1",
+    "css-mqpacker": "^7.0.0",
+    "node-sass-tilde-importer": "^1.0.2",
+    "postcss": "^7.0.18",
+    "postcss-csso": "^3.0.0",
+    "postcss-flexbugs-fixes": "^4.1.0",
+    "sass": "^1.22.12"
+  }
+}

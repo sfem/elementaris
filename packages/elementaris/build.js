@@ -9,13 +9,12 @@ const mqpacker = require('css-mqpacker');
 const flexbugsFixes = require('postcss-flexbugs-fixes');
 const csso = require('postcss-csso');
 
-const disFile = path.join('.', 'dist', 'css-sugars.css');
+const disFile = path.join('.', 'dist', 'sfem-grid.css');
 
 var css = sass.renderSync({
-  file: path.join('.', 'src', 'sugars.scss'),
+  file: path.join('.', 'src', 'sfem-grid.scss'),
   importer: tildeImporter
 }).css;
-
 
 const postcssResult = postcss([
   autoprefixer,
