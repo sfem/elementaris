@@ -2,22 +2,19 @@
   "name": "@sfem/breakpoint",
   "version": "2.0.0",
   "description": "Simple scss media query mixin. Helper for responsive design.",
+  "author": "Euheny Bondarovich <euheny@gmail.com>",
+  "license": "ISC",
   "main": "lib/breakpoint.scss",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sfem/breakpoint.git"
+    "url": "git+https://github.com/sfem/elementaris.git"
   },
-  "author": "Euheny Bondarovich",
-  "license": "ISC",
   "bugs": {
-    "url": "https://github.com/euheny/sfem.breakpoint/issues"
+    "url": "https://github.com/sfem/elementaris/issues"
   },
-  "homepage": "https://github.com/euheny/sfem.breakpoint#readme",
-  "devDependencies": {
+  "homepage": "https://github.com/sfem/elementaris/tree/master/packages/breakpoint",
+  "dependencies": {
     "sass": "^1.22.12"
-  },
-  "dependencies": {}
+  }
 }

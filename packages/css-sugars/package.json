@@ -2,11 +2,20 @@
   "name": "@sfem/css-sugars",
   "version": "2.0.0",
   "description": "CSS class helpers",
+  "author": "Euheny Bondarovich <euheny@gmail.com>",
+  "license": "ISC",
+  "main": "dist/css-sugars.min.css",
   "scripts": {
     "build": "node ./build.js"
   },
-  "author": "Euheny Bondarovich",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sfem/elementaris.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sfem/elementaris/issues"
+  },
+  "homepage": "https://github.com/sfem/elementaris/tree/master/packages/css-sugars",
   "dependencies": {
     "@sfem/breakpoint": "^2.0.0",
     "@sfem/scss-sugars": "^2.0.0",
@@ -18,14 +27,6 @@
     "postcss-flexbugs-fixes": "^4.1.0",
     "sass": "^1.22.12"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sfem/css-sugars.git"
-  },
-  "bugs": {
-    "url": "https://github.com/sfem/css-sugars/issues"
-  },
-  "homepage": "https://github.com/sfem/css-sugars#readme",
   "browserslist": [
     "> 1%",
     "Last 2 versions"

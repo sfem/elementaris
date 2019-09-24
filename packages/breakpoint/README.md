@@ -1,29 +1,32 @@
-sfem.breakpoint
-===========
+# sfem.breakpoint
 
 Simple scss media query mixin. Helper for responsive design.
 
-Install
----------
+### Install
 
-`npm install -S @sfem/breakpoint`
+```
+npm install -S @sfem/breakpoint
+```
 
-Settings
----------
+or
+
+```
+yarn add @sfem/breakpoint
+```
+
+### Settings
 
 ```scss
 $breakpoints: (
-  xs: 0,
   sm: 576px,
   md: 768px,
   lg: 992px,
-  xl: 1200px,
-  xxl: 1440px
+  xl: 1200px
 )
 ```
 
-Usage
----------
+### Usage
+
 Import module to your scss
 
 ```scss

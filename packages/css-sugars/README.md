@@ -1,16 +1,21 @@
-css.sugars
-===========
+# css.sugars
 
 Simple css/scss class helpers.
 
-Install
----------
+### Install
 
-### npm
-`npm install -S @sfem/css-sugars`
+```
+npm install -S @sfem/css-sugars
+```
 
-Usage
----------
+or
+
+```
+yarn add @sfem/css-sugars
+```
+
+### Usage
+
 Include css in your html
 
 ```html
@@ -23,28 +28,43 @@ or import module to your scss
 @import '~@sfem/src/sugars';
 ```
 
-SCSS Config
----------
+### SCSS Config
 
 ```scss
-$sugar-paddings: (0, 10px, 20px, 30px, 40px) !default;
-$sugar-ratios: ((1, 1), (2, 1), (3, 2), (4, 3)) !default;
+$sugar-padding-list: (0, 8, 16);
+$sugar-ratio-list: ((1, 1), (3, 2), (4, 3));
 
-$sugar-fw-list: (normal, bold) !default;
-$sugar-fs-list: (italic, normal) !default;
-$sugar-ta-list: (left, center, right, justify);
-$sugar-va-list: (baseline, bottom, middle, sub, super, text-bottom, text-top, top);
-
-$sugar-pm-sides: (left, right, top, bottom) !default;
-
-$sugar-enable-ta: true !default;
-$sugar-enable-fs: true !default;
-$sugar-enable-fw: true !default;
-$sugar-enable-ellipsis: true !default;
-$sugar-enable-bw: true !default;
-$sugar-enable-paddings: true !default;
-$sugar-enable-margins: true !default;
-$sugar-enable-hiders: true !default;
-$sugar-enable-aspect-ratio: true !default;
-$sugar-enable-va: true !default;
+$sugar-font-weight-list: (normal, bold);
+$sugar-font-style-list: (italic, normal);
+$sugar-text-align-list: (left, center, right, justify);
+$sugar-vertical-align-list: (baseline, bottom, middle, sub, super, text-bottom, text-top, top);
+$sugar-word-break-list: (normal break-all keep-all break-word);
+$sugar-display-list: (inline, inline-block, flex, inline-flex);
 ```
+
+```scss
+// enable only certain sugars
+
+$enable-sugars: (paddings margins);
+```
+
+```scss
+// disable certain sugars
+
+$disable-sugars: (word-break) !default;
+```
+
+### List of available sugars
+
+* font-weight
+* font-style
+* text-align
+* display
+* vertical-align
+* word-break
+* ellipsis
+* paddings
+* margins
+* hiders
+* aspect-ratio
+* round

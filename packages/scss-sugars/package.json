@@ -2,19 +2,18 @@
   "name": "@sfem/scss-sugars",
   "version": "2.0.0",
   "description": "Simple scss mixins and functions.",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "author": "Euheny Bondarovich <euheny@gmail.com>",
+  "license": "ISC",
+  "main": "lib/sugars.scss",
+  "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sfem/scss-sugars.git"
+    "url": "git+https://github.com/sfem/elementaris.git"
   },
-  "author": "Euheny Bondarovich",
-  "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sfem/scss-sugars/issues"
+    "url": "https://github.com/sfem/elementaris/issues"
   },
-  "homepage": "https://github.com/sfem/scss-sugars#readme",
+  "homepage": "https://github.com/sfem/elementaris/tree/master/packages/scss-sugars",
   "dependencies": {
     "@sfem/breakpoint": "^2.0.0"
   }

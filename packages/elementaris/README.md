@@ -1,11 +1,22 @@
-# `elementaris`
+# Sfem Elementaris
 
-> TODO: description
+Set of helpers for your fron-tend
 
-## Usage
+### Install
 
 ```
-const elementaris = require('elementaris');
-
-// TODO: DEMONSTRATE API
+npm install -S @sfem/elementaris
 ```
+
+or
+
+```
+yarn add @sfem/elementaris
+```
+
+### Include
+
+* @sfem/breakpoint
+* @sfem/scss-sugars
+* @sfem/css-sugars
+* @sfem/grid

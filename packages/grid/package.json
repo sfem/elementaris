@@ -2,12 +2,20 @@
   "name": "@sfem/grid",
   "version": "2.0.0",
   "description": "FlexBox grid system",
-  "main": "dist/sfem-grid.css",
+  "author": "Euheny Bondarovich <euheny@gmail.com>",
+  "license": "ISC",
+  "main": "dist/sfem-grid.min.css",
   "scripts": {
     "build": "node ./build.js"
   },
-  "author": "Euheny Bondarovich",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sfem/elementaris.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sfem/elementaris/issues"
+  },
+  "homepage": "https://github.com/sfem/elementaris/tree/master/packages/grid",
   "dependencies": {
     "@sfem/breakpoint": "^2.0.0",
     "@sfem/scss-sugars": "^2.0.0",
@@ -19,14 +27,6 @@
     "postcss-flexbugs-fixes": "^4.1.0",
     "sass": "^1.22.12"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sfem/grid.git"
-  },
-  "bugs": {
-    "url": "https://github.com/sfem/grid/issues"
-  },
-  "homepage": "https://github.com/sfem/grid#readme",
   "browserslist": [
     "> 1%",
     "Last 2 versions"
