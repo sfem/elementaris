@@ -19,12 +19,5 @@
   "devDependencies": {
     "sass": "^1.22.12"
   },
-  "dependencies": {
-    "autoprefixer": "^9.6.1",
-    "css-mqpacker": "^7.0.0",
-    "node-sass-tilde-importer": "^1.0.2",
-    "postcss": "^7.0.18",
-    "postcss-csso": "^3.0.0",
-    "postcss-flexbugs-fixes": "^4.1.0"
-  }
+  "dependencies": {}
 }

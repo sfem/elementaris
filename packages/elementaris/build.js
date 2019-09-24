@@ -9,10 +9,10 @@ const mqpacker = require('css-mqpacker');
 const flexbugsFixes = require('postcss-flexbugs-fixes');
 const csso = require('postcss-csso');
 
-const disFile = path.join('.', 'dist', 'sfem-grid.css');
+const disFile = path.join('.', 'dist', 'elementaris.css');
 
 var css = sass.renderSync({
-  file: path.join('.', 'src', 'sfem-grid.scss'),
+  file: path.join('.', 'src', 'elementaris.scss'),
   importer: tildeImporter
 }).css;
 

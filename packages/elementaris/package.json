@@ -2,22 +2,11 @@
   "name": "@sfem/elementaris",
   "version": "1.0.0",
   "description": "",
+  "scripts": {
+    "build": "node ./build.js"
+  },
   "author": "Euheny Bondarovich <euheny@gmail.com>",
-  "homepage": "https://github.com/sfem/elementaris#readme",
   "license": "ISC",
-  "main": "index.scss",
-  "directories": {},
-  "files": [
-    "lib"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sfem/elementaris.git"
-  },
-  "scripts": {},
-  "bugs": {
-    "url": "https://github.com/sfem/elementaris/issues"
-  },
   "dependencies": {
     "@sfem/breakpoint": "^2.0.0",
     "@sfem/css-sugars": "^2.0.0",
@@ -30,5 +19,17 @@
     "postcss-csso": "^3.0.0",
     "postcss-flexbugs-fixes": "^4.1.0",
     "sass": "^1.22.12"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sfem/css-sugars.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sfem/css-sugars/issues"
+  },
+  "homepage": "https://github.com/sfem/css-sugars#readme",
+  "browserslist": [
+    "> 1%",
+    "Last 2 versions"
+  ]
 }
