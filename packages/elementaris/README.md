@@ -1,4 +1,4 @@
-# Sfem Elementaris
+# sfem.elementaris
 
 Set of helpers for your fron-tend
 

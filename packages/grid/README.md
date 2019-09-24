@@ -1,4 +1,4 @@
-## Sfem Grid
+## sfem.grid
 
 ### Install
 
