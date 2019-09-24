@@ -1,23 +1,61 @@
-$sugar-paddings: (0, 16px, 24px, 32px, 48px) !default;
-$sugar-ratios: ((1, 1), (2, 1), (3, 2), (4, 3)) !default;
+$sugar-padding-list: (0, 8, 16) !default;
+$sugar-ratio-list: ((1, 1), (3, 2), (4, 3)) !default;
 
-$sugar-fw-list: (normal, bold) !default;
-$sugar-fs-list: (italic, normal) !default;
-$sugar-ta-list: (left, center, right, justify);
-$sugar-va-list: (baseline, bottom, middle, sub, super, text-bottom, text-top, top);
+$sugar-font-weight-list: (normal, bold) !default; // in map
+$sugar-font-style-list: (italic, normal) !default; // in map
+$sugar-text-align-list: (left, center, right, justify) !default; // in map
+$sugar-vertical-align-list: (baseline, bottom, middle, sub, super, text-bottom, text-top, top) !default; // in map
+$sugar-word-break-list: (normal break-all keep-all break-word) !default; // in map
+$sugar-display-list: (inline, inline-block, flex, inline-flex) !default; // in map
 
-$sugar-pm-types: ();
-$sugar-pm-sides: (left, right, top, bottom) !default;
+$sugar-indent-types: ();
+$sugar-indent-sides: (top right bottom left) !default;
 
-$sugar-enable-ta: true !default;
-$sugar-enable-fs: true !default;
-$sugar-enable-fw: true !default;
-$sugar-enable-ellipsis: true !default;
-$sugar-enable-bw: true !default;
-$sugar-enable-paddings: true !default;
-$sugar-enable-margins: true !default;
-$sugar-enable-hiders: true !default;
-$sugar-enable-aspect-ratio: true !default;
-$sugar-enable-va: true !default;
-$sugar-enable-display: true !default;
+// enablers
 
+$all-sugar-props: (
+  font-weight,
+  font-style,
+  text-align,
+  display,
+  vertical-align,
+  word-break,
+  ellipsis,
+  paddings,
+  margins,
+  hiders,
+  aspect-ratio,
+  round
+);
+
+$enable-sugars: () !default;
+$disable-sugars: () !default;
+
+$css-sugars: enabled-sugars();
+
+$sugar-map: (
+  fw: (
+    list: $sugar-font-weight-list,
+    key: font-weight
+  ),
+  fs: (
+    list: $sugar-font-style-list,
+    key: font-style
+  ),
+  ta: (
+    list: $sugar-text-align-list,
+    key: text-align
+  ),
+  d: (
+    list: $sugar-display-list,
+    key: display
+  ),
+  va: (
+    list: $sugar-vertical-align-list,
+    key: vertical-align
+  ),
+  wb: (
+    list: $sugar-word-break-list,
+    key: word-break
+  )
+)

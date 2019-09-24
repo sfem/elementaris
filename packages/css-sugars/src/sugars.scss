@@ -2,126 +2,96 @@
 @import '~@sfem/scss-sugars/lib/sugars';
 @import 'variables';
 
-// Text
-@if $sugar-enable-ta {
-  @each $val in $sugar-ta-list {
-    @include mq-sugars-generator(ta, '-' + $val) {
-      text-align: $val;
-    }
-  }
-}
 
-// ----------------
+@each $class, $item in $sugar-map {
+  $prop: map-get($item, key);
+  $list: map-get($item, list);
 
-@if $sugar-enable-fs {
-  @each $val in $sugar-fs-list {
-    @include mq-sugars-generator(fs, '-' + $val) {
-      font-style: $val;
-    }
-  }
-}
-
-@if $sugar-enable-fw {
-  @each $val in $sugar-fw-list {
-    @include mq-sugars-generator(fw, '-' + $val) {
-      font-weight: $val;
-    }
-  }
-}
-
-@if $sugar-enable-ellipsis {
-  @include mq-sugars-generator(text, -ellipsis) {
-    @include ellipsis();
-  }
-}
-
-@if $sugar-enable-bw {
-  @include mq-sugars-generator(text, -break-word) {
-    @include break-word();
-  }
-}
-
-
-// Paddings & Margins
-
-@if $sugar-enable-paddings {
-  $sugar-pm-types: join(padding, $sugar-pm-types);
-}
-
-@if $sugar-enable-margins {
-  $sugar-pm-types: join(margin, $sugar-pm-types);
-}
-
-@each $num in $sugar-paddings {
-  @each $type in $sugar-pm-types {
-    @include mq-sugars-generator(str-slice($type, 0, 1), '-' + strip-unit($num)) {
-      #{$type}: #{$num};
-    }
-
-    @each $side in $sugar-pm-sides {
-      @include mq-sugars-generator(str-slice($type, 0, 1) + str-slice($side, 0, 1), '-' + strip-unit($num)) {
-        #{$type}-#{$side}: #{$num};
+  @if sugar-enable($prop) {
+    .#{$class} {
+      @each $val in $list {
+        @include  mq-generator($val: $val) {
+          #{$prop}: $val;
+        }
       }
     }
   }
 }
 
-// Displays
+@if sugar-enable(paddings) {
+  $sugar-indent-types: join(padding, $sugar-indent-types);
+}
 
-@if $sugar-enable-hiders {
-  .display--none, .hide {
-    display: none;
-  }
+@if sugar-enable(margins) {
+  $sugar-indent-types: join(margin, $sugar-indent-types);
+}
 
-  @each $name, $value in $breakpoints {
-    @include bp($name) {
-      .display-#{$name}--none, .hide-#{$name} {
-        display: none;
+@each $num in $sugar-padding-list {
+  @each $type in $sugar-indent-types {
+    $t: str-slice($type, 0, 1);
+    $n: strip-unit($num);
+
+    .#{$t} {
+      @include  mq-generator($val: $n) {
+        #{$type}: convert-unit($num);
+      }
+
+      @each $side in $sugar-indent-sides {
+        $s: str-slice($side, 0, 1);
+
+        &#{$s} {
+          @include  mq-generator($val: $n) {
+            #{$type}-#{$side}: convert-unit($num);
+          }
+        }
+
       }
     }
   }
+}
 
-  @each $name, $value in $breakpoints-before {
-    @include bp($name, $bp: $breakpoints-before) {
-      .display-before-#{$name}--none, .hide-before-#{$name} {
-        display: none;
+@if sugar-enable(hiders) {
+  .hide {
+    @include  mq-generator() {
+      display: none;
+    }
+    @include  mq-generator(
+      $mod: before,
+      $mod-prefix: '-',
+      $disable-non-bp: true,
+      $degrade: true
+    ) {
+      display: none;
+    }
+  }
+}
+
+@if sugar-enable(aspect-ratio) {
+  .aspect-ratio {
+    @each $val in $sugar-ratio-list {
+      @include  mq-generator($val: nth($val, 1) + '-' + nth($val, 2)) {
+        @include aspect-ratio(nth($val, 1), nth($val, 2))
       }
     }
   }
 }
 
-@if $sugar-enable-display {
-  @each $type in (inline, inline-block, flex, inline-flex) {
-    @include mq-sugars-generator(display, '-' + $type) {
-      display: #{$type};
+@if sugar-enable(round) {
+  .round {
+    @include  mq-generator() {
+      border-radius: 50%;
+    }
+    @include  mq-generator($val: none) {
+      border-radius: 0;
     }
   }
 }
 
-// Aspect Ratio
 
-@if $sugar-enable-aspect-ratio {
-  @each $val in $sugar-ratios {
-    @include mq-sugars-generator(ratio, '-' +  nth($val, 1) + '-' + nth($val, 2)) {
-      @include aspect-ratio(nth($val, 1), nth($val, 2))
-    }
+@if sugar-enable(ellipsis) {
+  .ellipsis {
+    //@include  mq-generator() {
+      @include ellipsis();
+    //}
   }
-}
-
-// OTHER
-
-@if $sugar-enable-va {
-  @each $val in $sugar-va-list {
-    @include mq-sugars-generator(va, '-' + $val) {
-      vertical-align: #{$val};
-    }
-  }
-}
-
-@include mq-sugars-generator('round') {
-  border-radius: 50%;
-}
-
-@include mq-sugars-generator('round', '-none') {
-  border-radius: 0;
 }

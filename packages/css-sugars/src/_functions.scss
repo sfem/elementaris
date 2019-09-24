@@ -1,0 +1,19 @@
+@function enabled-sugars() {
+  @if length($enable-sugars) > 0 {
+    @return $enable-sugars;
+  }
+  @if length($disable-sugars) > 0 {
+    $enabled: ();
+    @each $prop in $all-sugar-props {
+      @if not index($disable-sugars, $prop) {
+        $enabled: append($enabled, $prop)
+      }
+    }
+    @return $enabled;
+  }
+  @return $all-sugar-props;
+}
+
+@function sugar-enable($prop) {
+  @return index($css-sugars, $prop)
+}

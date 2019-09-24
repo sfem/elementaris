@@ -8,6 +8,30 @@
   @return $number;
 }
 
+@function convert-unit($num, $unit: null) {
+  $index: null;
+
+  @if $unit {
+    $index: index($unit-strings, $unit + '');
+
+    @if not $index {
+      @warn "Unknown unit `#{$unit}`.";
+      @return false;
+    }
+  }
+
+
+  @if unitless($num) and not $index {
+    @return $num * 1px;
+  }
+
+  @if $index {
+    @return strip-unit($num) * nth($unit-vals, $index);
+  }
+
+  @return $num;
+}
+
 @function to-string($value) {
   @if type-of($value) == string {
     @return unquote($value);

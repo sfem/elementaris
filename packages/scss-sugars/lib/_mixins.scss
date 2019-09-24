@@ -3,19 +3,25 @@
   $val: null,
   $pre: null,
   $selector: &, // use with caution
-  $postselector: null // use with caution
+  $postselector: null, // use with caution
+  $degrade: null, // use with caution
+  $disable-non-bp: null, // use with caution
+  $mod-prefix: $mq-generator-mod-prefix,
+  $val-prefix: $mq-generator-val-prefix
 ) {
-  $mod: if($mod, $mq-generator-mod-prefix + $mod, null);
-  $val: if($val, $mq-generator-val-prefix + $val, null);
+  $mod: if($mod, $mod-prefix + $mod, null);
+  $val: if($val, $val-prefix + $val, null);
 
-  @at-root {
-    #{$selector + $mod + $val + $postselector} {
-      @content;
+  @if not $disable-non-bp {
+    @at-root {
+      #{$selector + $mod + $val + $postselector} {
+        @content;
+      }
     }
   }
 
   @each $name, $value in $breakpoints {
-    @include bp($name) {
+    @include bp($name, $degrade: $degrade) {
       @at-root {
         #{$selector + $mod + '-' + $name + $val + $postselector} {
           @content;

@@ -6,7 +6,7 @@ $breakpoints: (
   xxl: 1440px,
 ) !default;
 
-$breakpoints-degrade: false !default;
+$breakpoints-degrade: null !default;
 
 @function check-breakpoint-type($query) {
   $type: type-of($query);
@@ -55,7 +55,7 @@ $breakpoints-degrade: false !default;
 
 @mixin bp($query, $bp: $breakpoints, $for: all, $degrade: $breakpoints-degrade) {
   @if (check-breakpoint-type($query) == string) {
-    @if($degrade == false) {
+    @if not $degrade {
       $query: map-get($bp, $query);
     } @else {
       $query: (max-width, map-get($bp, $query) - 1)
