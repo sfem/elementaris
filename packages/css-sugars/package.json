@@ -1,6 +1,6 @@
 {
   "name": "@sfem/css-sugars",
-  "version": "2.0.0",
+  "version": "1.3.0",
   "description": "CSS class helpers",
   "author": "Euheny Bondarovich <euheny@gmail.com>",
   "license": "ISC",

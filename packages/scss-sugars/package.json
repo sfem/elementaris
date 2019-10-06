@@ -1,6 +1,6 @@
 {
   "name": "@sfem/scss-sugars",
-  "version": "2.0.0",
+  "version": "1.3.0",
   "description": "Simple scss mixins and functions.",
   "author": "Euheny Bondarovich <euheny@gmail.com>",
   "license": "ISC",
