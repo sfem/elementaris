@@ -16,5 +16,6 @@
   "homepage": "https://github.com/sfem/elementaris/tree/master/packages/breakpoint",
   "dependencies": {
     "sass": "^1.22.12"
-  }
+  },
+  "gitHead": "e6417123cfc0cccddba3fd2bfe934a2ec7f47c20"
 }
