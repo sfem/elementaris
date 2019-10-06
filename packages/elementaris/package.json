@@ -1,6 +1,6 @@
 {
   "name": "@sfem/elementaris",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Simple modules for building front-end",
   "author": "Euheny Bondarovich <euheny@gmail.com>",
   "license": "ISC",
